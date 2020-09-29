@@ -1,0 +1,53 @@
+const JSEncrypt = require('js-encrypt').JSEncrypt;
+
+export const public_key = `-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqC+lCfwEekyPQxet/Gis
++KaD47vDrdZQoMdUOFtyqyzgkGZ+GvO49n/USDLsLf4Kfd5yextiU+Ugp92iaupQ
+Cp+2tHJY4kG8dB8XvN3yMMjTNm6m8ZInyyMYzw3mOwN9Rhsud7sSJxfj6RRpcXYZ
+k4dmEqxApI1VEPtrefs40ZQV6+zwGreVKW1t45KO0If+Vl1bob7/ObyDoRVWRWh6
+dMo+BWfZ4v13NwH3ZuPbI+37qSCJx3jdovndQlmSyf+KVIvLuFfxlsJdI3E+EGMS
+w+ad4fO1uqhjXgWSG4AgAYHlsAb2ZRNje6L58UgNiuNxFbuRc5jPKpbZt9XACnrX
+5wIDAQAB
+-----END PUBLIC KEY-----`;
+
+export const private_key = `-----BEGIN RSA PRIVATE KEY-----
+MIIEpAIBAAKCAQEAqC+lCfwEekyPQxet/Gis+KaD47vDrdZQoMdUOFtyqyzgkGZ+
+GvO49n/USDLsLf4Kfd5yextiU+Ugp92iaupQCp+2tHJY4kG8dB8XvN3yMMjTNm6m
+8ZInyyMYzw3mOwN9Rhsud7sSJxfj6RRpcXYZk4dmEqxApI1VEPtrefs40ZQV6+zw
+GreVKW1t45KO0If+Vl1bob7/ObyDoRVWRWh6dMo+BWfZ4v13NwH3ZuPbI+37qSCJ
+x3jdovndQlmSyf+KVIvLuFfxlsJdI3E+EGMSw+ad4fO1uqhjXgWSG4AgAYHlsAb2
+ZRNje6L58UgNiuNxFbuRc5jPKpbZt9XACnrX5wIDAQABAoIBAQCcYPCLgBCJxnXO
+ZE4ZyxpJeEpZjVQ8ZnFBjRT58c2E641Btoq6dLMeP20aVH7VpMgMkLDRVnzulLTw
+YFuMHaGevzIaRdfvSD/5mI9xxMxUH+aDTg9bvhHSBygiHUJczLnGXa+vE/mk78my
+BpCkNrNBQTvfUNoqJl9aEuuz16rU8d7Y/dfHYzk6b+nGQQZPOzymCPV4GxYiAuk9
+PTj7NRdZ0AeQUgIhtpqNvsfxJPzGYtbwdEMri5TiZsozahktT6CAf4hB5YIhyAM6
+4yj7pEX0REcggcJ06zKtoB95mSnDZymK2L3jLY3fbsd5EplN/S1q27BvhpvqLLVY
+m7AwbEqBAoGBAOywP2M7WjbyzTeI/uUJx+gne4t4+uS+ErvLArHISL8LW6buxcZa
+qFEqXIqS2M9/Dqdv954nPDeaNILEqg1nrsCqQfmfQu1thTmweEdfbuBpUoVK9Pq+
++nc1KWPSCFHpmqx57m2epd+YPieVpCb3zFI/zxP2LFwYSiJjlgHCojY/AoGBALXo
+k6Jtc3rs4gBI2mQakJSuo9thU+PqB+fmCye68GZaG99hRay9kPRsmCjFM2suKrms
+1CSpSHGLoQlQ3eHYUEJazYgEhdMpf6nOS4ZXXR4NPBflxVjq4n0cpfKw4Vtd1vgz
++AgAn8o2BNbC6X64Xn3hv+COTKQR9gHAMmWrgwRZAoGAOS5nUfjv1aCZFZaiRgEz
+65FGVq62pnaJHhdwojTJ5mW/EbhTzZTvXxSF4PCTMqX2i1sQjoPaF3DIyOLsVmq7
+HE7Fu6HPUH8KFaLdnBihN9QaHJu8Tau/5PbR9gyy998hABRBFviiCD/GnFeZndR1
+51UFGUR6+RDhMCexAOHdwI8CgYEAiK0j6AGmp7C+KgqTFG2lPiFtehLJrlAT+pgs
+v4BEyhJgKNl0OVMBS7UgKlnoxVodvf5uMtGCXdXUfCRnYh5eR0zkapNDXaIripE2
+y8xuaXr2MNpyCdoJrIlO4mcmG7kJINojPRgC9zLZNeei+pRaYuiwe29PhGL+XNhk
+xWE1gpkCgYBFVBTP5zsz+GNWPrfYB/2s5GoZFdceNkOf/KxnVEErhqj5pwYY9uV/
+478F2GNdoqzmFLyFbs+2e0cSK1addyreDBbRF238EqquZmWA+PEVDCHE8ub5KPBE
+8sNiZzNYAFrwgmHmKUZuTBdoIoW7HA1u4xQ/gr10DGkhuZVlSMKRnQ==
+-----END RSA PRIVATE KEY-----`;
+
+
+const encryptor = new JSEncrypt();
+encryptor.setPublicKey(public_key);
+const decryptor = new JSEncrypt();
+decryptor.setPrivateKey(private_key);
+
+export function decrypt(encrypted_text: any) {
+  return decryptor.decrypt(encrypted_text);
+}
+
+export function encrypt(text: any) {
+  return decryptor.encrypt(text);
+}
